@@ -69,16 +69,133 @@
         }
         .card-hover { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         .card-hover:hover { transform: translateY(-6px) scale(1.01); box-shadow: 0 25px 50px -12px rgba(59,130,246,0.2); border-color: #60A5FA; }
-        .gallery-img { transition: all 0.4s ease; position: relative; overflow: hidden; }
-        .gallery-img::before {
-            content: ''; position: absolute; inset: 0;
-            background: linear-gradient(45deg, transparent, rgba(59,130,246,0.15), transparent);
-            transform: translateX(-100%); transition: 0.5s;
+        
+        /* === Gallery - Natural Size Images === */
+        .gallery-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            width: 100%;
         }
-        .gallery-img:hover::before { transform: translateX(100%); }
-        .gallery-img:hover { transform: scale(1.03); box-shadow: 0 12px 30px rgba(0,0,0,0.4); }
-        .gallery-img img { transition: transform 0.4s ease; }
-        .gallery-img:hover img { transform: scale(1.08); }
+        
+        .gallery-img {
+            position: relative;
+            background: #0f172a;
+            border-radius: 12px;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-in;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+        }
+        
+        .gallery-img img {
+            display: block;
+            width: auto;
+            height: auto;
+            max-width: 100%;
+            max-height: none;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-img:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-img:hover img {
+            transform: scale(1.02);
+        }
+        
+        .gallery-img::before {
+            content: ''; 
+            position: absolute; 
+            inset: 0;
+            background: linear-gradient(45deg, transparent, rgba(59,130,246,0.1), transparent);
+            transform: translateX(-100%); 
+            transition: 0.6s;
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        .gallery-img:hover::before { 
+            transform: translateX(100%); 
+        }
+        
+        /* === Lightbox Modal === */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(2, 6, 23, 0.98);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            padding: 2rem;
+            overflow: auto;
+        }
+        
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        
+        .lightbox img {
+            max-width: 95vw;
+            max-height: 90vh;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 25px 80px rgba(0,0,0,0.8);
+            border: 2px solid rgba(59,130,246,0.3);
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            background: rgba(30,41,59,0.9);
+            border: 1px solid rgba(255,255,255,0.1);
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 1001;
+        }
+        
+        .lightbox-close:hover {
+            background: rgba(239,68,68,0.9);
+            transform: rotate(90deg);
+        }
+        
+        .lightbox-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255,255,255,0.9);
+            font-size: 0.95rem;
+            background: rgba(15,23,42,0.9);
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            max-width: 90vw;
+            text-align: center;
+            z-index: 1001;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
         .typing-cursor::after { content: '|'; animation: blink 1s step-end infinite; }
         @keyframes blink { 50% { opacity: 0; } }
         .scroll-progress { position: fixed; top: 0; left: 0; height: 3px; background: linear-gradient(90deg, #3B82F6, #8B5CF6, #06B6D4); z-index: 100; width: 0%; transition: width 0.1s; }
@@ -306,10 +423,18 @@
             <div class="p-6 md:p-8 bg-slate-950">
                 <h4 class="text-lg font-semibold text-white mb-4">📱 Project Gallery</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-img"><img src="assets/v8-alpha/dashboard.jpg" alt="V8 Dashboard" onerror="this.src='https://via.placeholder.com/400x300/1e293b/60A5FA?text=ERP+Dashboard'"></div>
-                    <div class="gallery-img"><img src="assets/v8-alpha/inventory.jpg" alt="Inventory" onerror="this.src='https://via.placeholder.com/400x300/1e293b/60A5FA?text=Inventory+Module'"></div>
-                    <div class="gallery-img"><img src="assets/v8-alpha/reports.jpg" alt="Reports" onerror="this.src='https://via.placeholder.com/400x300/1e293b/60A5FA?text=Analytics+Panel'"></div>
-                    <div class="gallery-img"><img src="assets/v8-alpha/mobile.jpg" alt="Mobile" onerror="this.src='https://via.placeholder.com/400x300/1e293b/60A5FA?text=Cross-Platform+UI'"></div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/v8-alpha/dashboard.jpeg" alt="V8 Dashboard" data-caption="V8 Alpha - ERP Dashboard" onerror="this.src='https://via.placeholder.com/800x600/1e293b/60A5FA?text=ERP+Dashboard'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/v8-alpha/inventory.jpeg" alt="Inventory" data-caption="V8 Alpha - Inventory Module" onerror="this.src='https://via.placeholder.com/800x600/1e293b/60A5FA?text=Inventory+Module'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/v8-alpha/reports.jpeg" alt="Reports" data-caption="V8 Alpha - Analytics Panel" onerror="this.src='https://via.placeholder.com/800x600/1e293b/60A5FA?text=Analytics+Panel'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/v8-alpha/mobile.jpeg" alt="Mobile" data-caption="V8 Alpha - Cross-Platform UI" onerror="this.src='https://via.placeholder.com/800x600/1e293b/60A5FA?text=Cross-Platform+UI'" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -349,10 +474,18 @@
             <div class="p-6 md:p-8 bg-slate-950">
                 <h4 class="text-lg font-semibold text-white mb-4">📱 Project Gallery</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-img"><img src="assets/postmap/tracking.jpg" alt="Tracking" onerror="this.src='https://via.placeholder.com/400x300/1e293b/22C55E?text=Live+Tracking'"></div>
-                    <div class="gallery-img"><img src="assets/postmap/driver-app.jpg" alt="Driver" onerror="this.src='https://via.placeholder.com/400x300/1e293b/22C55E?text=Driver+App'"></div>
-                    <div class="gallery-img"><img src="assets/postmap/dispatch.jpg" alt="Dispatch" onerror="this.src='https://via.placeholder.com/400x300/1e293b/22C55E?text=Dispatch+Console'"></div>
-                    <div class="gallery-img"><img src="assets/postmap/pod.jpg" alt="POD" onerror="this.src='https://via.placeholder.com/400x300/1e293b/22C55E?text=Proof+of+Delivery'"></div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/postmap/tracking.jpeg" alt="Tracking" data-caption="PostMap - Live Tracking" onerror="this.src='https://via.placeholder.com/800x600/1e293b/22C55E?text=Live+Tracking'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/postmap/driver-app.jpeg" alt="Driver" data-caption="PostMap - Driver App" onerror="this.src='https://via.placeholder.com/800x600/1e293b/22C55E?text=Driver+App'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/postmap/dispatch.jpeg" alt="Dispatch" data-caption="PostMap - Dispatch Console" onerror="this.src='https://via.placeholder.com/800x600/1e293b/22C55E?text=Dispatch+Console'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/postmap/pod.jpeg" alt="POD" data-caption="PostMap - Proof of Delivery" onerror="this.src='https://via.placeholder.com/800x600/1e293b/22C55E?text=Proof+of+Delivery'" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -392,10 +525,18 @@
             <div class="p-6 md:p-8 bg-slate-950">
                 <h4 class="text-lg font-semibold text-white mb-4">📱 Project Gallery</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-img"><img src="assets/easy-hishab/dashboard.jpg" alt="Dashboard" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EAB308?text=Dashboard'"></div>
-                    <div class="gallery-img"><img src="assets/easy-hishab/pos.jpg" alt="POS" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EAB308?text=Mobile+POS'"></div>
-                    <div class="gallery-img"><img src="assets/easy-hishab/inventory.jpg" alt="Inventory" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EAB308?text=Stock+Sync'"></div>
-                    <div class="gallery-img"><img src="assets/easy-hishab/reports.jpg" alt="Reports" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EAB308?text=Financials'"></div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/easy-hishab/dashboard.jpeg" alt="Dashboard" data-caption="Easy Hishab - Dashboard" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EAB308?text=Dashboard'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/easy-hishab/pos.jpeg" alt="POS" data-caption="Easy Hishab - Mobile POS" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EAB308?text=Mobile+POS'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/easy-hishab/inventory.jpeg" alt="Inventory" data-caption="Easy Hishab - Stock Sync" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EAB308?text=Stock+Sync'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/easy-hishab/reports.jpeg" alt="Reports" data-caption="Easy Hishab - Financials" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EAB308?text=Financials'" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -435,10 +576,18 @@
             <div class="p-6 md:p-8 bg-slate-950">
                 <h4 class="text-lg font-semibold text-white mb-4">📱 Project Gallery</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-img"><img src="assets/ai-chatbot/chat-interface.jpg" alt="Chat UI" onerror="this.src='https://via.placeholder.com/400x300/1e293b/A78BFA?text=Chat+UI'"></div>
-                    <div class="gallery-img"><img src="assets/ai-chatbot/nlp-dashboard.jpg" alt="NLP" onerror="this.src='https://via.placeholder.com/400x300/1e293b/A78BFA?text=NLP+Pipeline'"></div>
-                    <div class="gallery-img"><img src="assets/ai-chatbot/analytics.jpg" alt="Analytics" onerror="this.src='https://via.placeholder.com/400x300/1e293b/A78BFA?text=Analytics'"></div>
-                    <div class="gallery-img"><img src="assets/ai-chatbot/integration.jpg" alt="CRM" onerror="this.src='https://via.placeholder.com/400x300/1e293b/A78BFA?text=CRM+Sync'"></div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ai-chatbot/chat-interface.jpeg" alt="Chat UI" data-caption="AI Chatbot - Chat Interface" onerror="this.src='https://via.placeholder.com/800x600/1e293b/A78BFA?text=Chat+UI'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ai-chatbot/nlp-dashboard.jpeg" alt="NLP" data-caption="AI Chatbot - NLP Pipeline" onerror="this.src='https://via.placeholder.com/800x600/1e293b/A78BFA?text=NLP+Pipeline'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ai-chatbot/analytics.jpeg" alt="Analytics" data-caption="AI Chatbot - Analytics" onerror="this.src='https://via.placeholder.com/800x600/1e293b/A78BFA?text=Analytics'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ai-chatbot/integration.jpeg" alt="CRM" data-caption="AI Chatbot - CRM Sync" onerror="this.src='https://via.placeholder.com/800x600/1e293b/A78BFA?text=CRM+Sync'" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -478,10 +627,18 @@
             <div class="p-6 md:p-8 bg-slate-950">
                 <h4 class="text-lg font-semibold text-white mb-4">📱 Project Gallery</h4>
                 <div class="gallery-grid">
-                    <div class="gallery-img"><img src="assets/ecommerce-app/home-screen.jpg" alt="Home" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EC4899?text=Home+Screen'"></div>
-                    <div class="gallery-img"><img src="assets/ecommerce-app/product-detail.jpg" alt="Product" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EC4899?text=Product+Detail'"></div>
-                    <div class="gallery-img"><img src="assets/ecommerce-app/cart-checkout.jpg" alt="Cart" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EC4899?text=Cart+Checkout'"></div>
-                    <div class="gallery-img"><img src="assets/ecommerce-app/order-tracking.jpg" alt="Tracking" onerror="this.src='https://via.placeholder.com/400x300/1e293b/EC4899?text=Order+Tracking'"></div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ecommerce-app/home-screen.jpeg" alt="Home" data-caption="E-Commerce - Home Screen" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EC4899?text=Home+Screen'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ecommerce-app/product-detail.jpeg" alt="Product" data-caption="E-Commerce - Product Detail" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EC4899?text=Product+Detail'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ecommerce-app/cart-checkout.jpeg" alt="Cart" data-caption="E-Commerce - Cart & Checkout" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EC4899?text=Cart+Checkout'" loading="lazy">
+                    </div>
+                    <div class="gallery-img" onclick="openLightbox(this)">
+                        <img src="assets/ecommerce-app/order-tracking.jpeg" alt="Tracking" data-caption="E-Commerce - Order Tracking" onerror="this.src='https://via.placeholder.com/800x600/1e293b/EC4899?text=Order+Tracking'" loading="lazy">
+                    </div>
                 </div>
             </div>
         </div>
@@ -732,6 +889,13 @@
     <!-- Back to Top -->
     <button id="backToTop" class="fixed bottom-6 right-6 bg-gradient-to-r from-primary to-secondary hover:from-blue-600 hover:to-purple-600 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition transform translate-y-20 opacity-0 z-40 hover:scale-110"><i class="fas fa-arrow-up"></i></button>
 
+    <!-- Lightbox Modal -->
+    <div id="lightbox" class="lightbox" onclick="closeLightbox(event)">
+        <button class="lightbox-close" onclick="closeLightboxBtn()">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+        <div id="lightbox-caption" class="lightbox-caption"></div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
@@ -802,6 +966,40 @@
                 l.classList.remove('text-white', 'bg-slate-800/50');
                 if (l.getAttribute('href') === `#${current}`) l.classList.add('text-white', 'bg-slate-800/50');
             });
+        });
+        
+        // === Lightbox Functions ===
+        function openLightbox(element) {
+            const img = element.querySelector('img');
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            const caption = document.getElementById('lightbox-caption');
+            
+            lightboxImg.src = img.src;
+            lightboxImg.alt = img.alt;
+            caption.textContent = img.getAttribute('data-caption') || img.alt;
+            
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeLightbox(event) {
+            if (event.target.id === 'lightbox' || event.target.classList.contains('lightbox-close')) {
+                closeLightboxBtn();
+            }
+        }
+
+        function closeLightboxBtn() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+            setTimeout(() => {
+                document.getElementById('lightbox-img').src = '';
+            }, 300);
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeLightboxBtn();
         });
     </script>
 </body>
