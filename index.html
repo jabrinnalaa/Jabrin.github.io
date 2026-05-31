@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muhammad Jobayer Hossan | Senior Flutter Engineer</title>
+    <meta name="description" content="Portfolio of Muhammad Jobayer Hossan, Senior Flutter Engineer specializing in SaaS, AI, and Cross-Platform Mobile Applications.">
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-text {
+            background: linear-gradient(to right, #60A5FA, #A78BFA);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .project-card:hover { transform: translateY(-5px); transition: all 0.3s ease; }
+    </style>
+</head>
+<body class="bg-slate-900 text-slate-300 antialiased selection:bg-blue-500 selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-slate-900/90 backdrop-blur-sm border-b border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16">
+                <div class="flex-shrink-0 font-bold text-xl text-white">MJH<span class="text-blue-500">.</span></div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#home" class="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="#skills" class="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Skills</a>
+                        <a href="#projects" class="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Projects</a>
+                        <a href="#experience" class="hover:text-white px-3 py-2 rounded-md text-sm font-medium">Experience</a>
+                        <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium">Contact Me</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="pt-32 pb-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <div class="text-center">
+            <h1 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight mb-4">
+                Hi, I'm <span class="gradient-text">Muhammad Jobayer Hossan</span>
+            </h1>
+            <p class="mt-4 text-xl text-slate-400 max-w-2xl mx-auto">
+                Senior Flutter Engineer | SaaS & AI Specialist
+            </p>
+            <p class="mt-2 text-lg text-slate-500 max-w-2xl mx-auto">
+                Building scalable cross-platform applications, offline-first architectures, and AI-powered mobile experiences for iOS, Android, and Web.
+            </p>
+            <div class="mt-8 flex justify-center gap-4">
+                <a href="https://github.com/jabrinnalaa" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="https://linkedin.com/in/muhammad-jobayer-hossan-267687222" target="_blank" class="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-medium transition">
+                    <i class="fab fa-linkedin"></i> LinkedIn
+                </a>
+                <a href="mailto:hossanjobayer2021@gmail.com" class="flex items-center gap-2 border border-slate-700 hover:bg-slate-800 text-white px-6 py-3 rounded-lg font-medium transition">
+                    <i class="fas fa-envelope"></i> Email
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-800/50">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Technical Arsenal</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Mobile & Cross-Platform -->
+                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-mobile-alt text-blue-500 mr-2"></i> Mobile & Cross-Platform</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Flutter</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Dart</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">iOS/Android SDK</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Flutter Web/Desktop</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Riverpod/BLoC</span>
+                    </div>
+                </div>
+                <!-- Backend & Cloud -->
+                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-server text-green-500 mr-2"></i> Backend & Cloud</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Firebase</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Node.js</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">MongoDB</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">SQL Server</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">GraphQL/REST</span>
+                    </div>
+                </div>
+                <!-- AI & DevOps -->
+                <div class="bg-slate-900 p-6 rounded-xl border border-slate-800">
+                    <h3 class="text-xl font-semibold text-white mb-4"><i class="fas fa-robot text-purple-500 mr-2"></i> AI & DevOps</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">OpenAI API</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Dialogflow</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">GitHub Actions</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">Fastlane</span>
+                        <span class="px-3 py-1 bg-slate-800 rounded-full text-sm">CI/CD</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-white mb-12 text-center">Featured Projects</h2>
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+            
+            <!-- Project 1: V8 Alpha -->
+            <div class="project-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700">
+                <!-- REPLACE SRC WITH YOUR IMAGE PATH -->
+                <img src="https://via.placeholder.com/600x300/1e293b/ffffff?text=V8+Alpha+ERP+Dashboard" alt="V8 Alpha" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">V8 Alpha ERP SaaS</Multi-tenant Enterprise ERP</h3>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-4 text-sm">
+                        Secure multi-brand cross-platform platform with strict data isolation. Features atomic inventory operations, offline-first sync, and real-time WebSocket updates.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Flutter</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Node.js</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">MongoDB</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Offline-First</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 2: PostMap -->
+            <div class="project-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700">
+                <img src="https://via.placeholder.com/600x300/1e293b/ffffff?text=PostMap+Logistics+Tracking" alt="PostMap" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">PostMap Logistics</h3>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-4 text-sm">
+                        Real-time delivery tracking engine using GeoHashing and Firebase. Supports thousands of concurrent driver streams with offline capability for field operations.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Flutter</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Firebase</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Google Maps SDK</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">GeoHashing</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 3: Restora -->
+            <div class="project-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700">
+                <img src="https://via.placeholder.com/600x300/1e293b/ffffff?text=Restora+POS+System" alt="Restora" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">Restora POS SaaS</h3>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-4 text-sm">
+                        Restaurant ERP/POS with QR-based digital menus and real-time order workflow sync. Reduced order errors by 30% for partner restaurants.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Flutter</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Firebase</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">QR Integration</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project 4: AI Chatbot -->
+            <div class="project-card bg-slate-800 rounded-2xl overflow-hidden border border-slate-700">
+                <img src="https://via.placeholder.com/600x300/1e293b/ffffff?text=AI+Customer+Support+Bot" alt="AI Chatbot" class="w-full h-48 object-cover">
+                <div class="p-6">
+                    <div class="flex justify-between items-start mb-4">
+                        <h3 class="text-xl font-bold text-white">AI Support Chatbot</h3>
+                        <div class="flex gap-2">
+                            <a href="#" class="text-slate-400 hover:text-white"><i class="fab fa-github fa-lg"></i></a>
+                        </div>
+                    </div>
+                    <p class="text-slate-400 mb-4 text-sm">
+                        Multilingual (EN/AR/BN) chatbot integrated into mobile apps using Dialogflow and OpenAI. Automated 80% of customer inquiries.
+                    </p>
+                    <div class="flex flex-wrap gap-2 mb-4">
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Flutter</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">OpenAI API</span>
+                        <span class="text-xs font-semibold px-2 py-1 bg-blue-900 text-blue-200 rounded">Dialogflow</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-800/50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-white mb-12 text-center">Professional Experience</h2>
+            
+            <div class="space-y-8">
+                <!-- Job 1 -->
+                <div class="relative pl-8 border-l-2 border-slate-700">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-blue-500"></div>
+                    <h3 class="text-xl font-bold text-white">Lead Flutter Developer</h3>
+                    <p class="text-blue-400">Taghleef Tech | Jun 2025 – Present</p>
+                    <p class="mt-2 text-slate-400">Leading cross-platform mobile architecture for industrial IoT. Unified codebase for Android, iOS & web using Clean Architecture + Riverpod.</p>
+                </div>
+
+                <!-- Job 2 -->
+                <div class="relative pl-8 border-l-2 border-slate-700">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-600"></div>
+                    <h3 class="text-xl font-bold text-white">Senior Flutter & SaaS Developer</h3>
+                    <p class="text-blue-400">RootX Softwares | Aug 2025 – Present</p>
+                    <p class="mt-2 text-slate-400">Building multi-tenant cross-platform SaaS modules. Integrating AI-powered mobile features and optimizing Flutter web performance.</p>
+                </div>
+
+                <!-- Job 3 -->
+                <div class="relative pl-8 border-l-2 border-slate-700">
+                    <div class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-600"></div>
+                    <h3 class="text-xl font-bold text-white">Flutter Developer</h3>
+                    <p class="text-blue-400">Smart Code | Feb 2023 – Aug 2025</p>
+                    <p class="mt-2 text-slate-400">Built 5+ cross-platform apps serving 100K+ users. Implemented AI chatbots and payment gateways. Employee of the Year 2024.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / Contact -->
+    <footer id="contact" class="py-12 bg-slate-900 border-t border-slate-800">
+        <div class="max-w-6xl mx-auto px-4 text-center">
+            <h2 class="text-2xl font-bold text-white mb-6">Let's Build Something Scalable</h2>
+            <p class="text-slate-400 mb-8">Open for Senior Flutter / Mobile Engineer roles focused on SaaS and AI.</p>
+            <div class="flex justify-center gap-6 mb-8">
+                <a href="mailto:hossanjobayer2021@gmail.com" class="text-2xl text-slate-400 hover:text-white transition"><i class="fas fa-envelope"></i></a>
+                <a href="https://linkedin.com/in/muhammad-jobayer-hossan-267687222" class="text-2xl text-slate-400 hover:text-white transition"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/jabrinnalaa" class="text-2xl text-slate-400 hover:text-white transition"><i class="fab fa-github"></i></a>
+            </div>
+            <p class="text-slate-600 text-sm">© 2026 Muhammad Jobayer Hossan. Built with HTML & Tailwind.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
