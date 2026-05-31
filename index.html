@@ -107,7 +107,8 @@
         }
         .whatsapp-float:hover { transform: scale(1.1) rotate(10deg); box-shadow: 0 15px 40px rgba(37,211,102,0.6); }
         @keyframes pulse-whatsapp { 0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.7); } 50% { box-shadow: 0 0 0 20px rgba(37,211,102,0); } }
-        .timeline-line { position: absolute; left: 4px; md:left:1/2 top: 0 bottom: 0 w-0.5 bg-slate-800 transform md:-translate-x-1/2; }
+        .timeline-line { position: absolute; left: 4px; top: 0; bottom: 0; width: 2px; background: #1e293b; transform: translateX(-50%); }
+        @media (min-width: 768px) { .timeline-line { left: 50%; } }
         .badge { @apply px-3 py-1 rounded-full text-xs font-medium border border-slate-700 bg-slate-800/50 text-slate-300; }
         .tech-stack { @apply flex flex-wrap gap-2; }
     </style>
@@ -141,7 +142,7 @@
                     <a href="#skills" class="nav-link px-4 py-2 rounded-lg text-sm font-medium hover:text-white hover:bg-slate-800/50 transition">Skills</a>
                     <a href="#featured" class="nav-link px-4 py-2 rounded-lg text-sm font-medium hover:text-white hover:bg-slate-800/50 transition">Featured</a>
                     <a href="#experience" class="nav-link px-4 py-2 rounded-lg text-sm font-medium hover:text-white hover:bg-slate-800/50 transition">Experience</a>
-                    <a href="#contact" class="ml-2 bg-gradient-to-r from-primary to-secondary hover:from-blue-600 hover:to-purple-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-blue-500/25 shimmer">Let's Talk</a>
+                    <a href="#contact" class="ml-2 bg-gradient-to-r from-primary to-secondary hover:from-blue-600 hover:to-purple-600 text-white px-5 py-2.5 rounded-lg text-sm font-semibold transition shadow-lg shadow-blue-500/25 shimmer">Contact</a>
                 </div>
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg hover:bg-slate-800 transition"><i class="fas fa-bars text-xl"></i></button>
             </div>
@@ -152,7 +153,7 @@
                 <a href="#skills" class="block px-4 py-3 rounded-lg text-base font-medium hover:text-white hover:bg-slate-800">Skills</a>
                 <a href="#featured" class="block px-4 py-3 rounded-lg text-base font-medium hover:text-white hover:bg-slate-800">Featured</a>
                 <a href="#experience" class="block px-4 py-3 rounded-lg text-base font-medium hover:text-white hover:bg-slate-800">Experience</a>
-                <a href="#contact" class="block mt-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg text-base font-semibold text-center">Let's Talk</a>
+                <a href="#contact" class="block mt-2 bg-gradient-to-r from-primary to-secondary text-white px-4 py-3 rounded-lg text-base font-semibold text-center">Contact</a>
             </div>
         </div>
     </nav>
@@ -448,7 +449,7 @@
                 <div class="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
                     <div>
                         <h3 class="text-2xl font-display font-bold text-white mb-1">E-Commerce Platform</h3>
-                        <p class="text-slate-400">Full-Featured Cross-Online Shopping Application</p>
+                        <p class="text-slate-400">Full-Featured Cross-Platform Shopping Application</p>
                     </div>
                     <div class="flex gap-3">
                         <a href="https://github.com/jabrinnalaa/ecommerce-app" target="_blank" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg transition hover:scale-105"><i class="fab fa-github"></i> Code</a>
@@ -591,22 +592,21 @@
     </section>
 
     <!-- EXPERIENCE (DETAILED) -->
-    <section id="experience" class="py-24 bg-slate-900/30">
+    <section id="experience" class="py-24 bg-slate-900/30 relative">
+        <div class="timeline-line"></div>
         <div class="max-w-4xl mx-auto px-4">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-12 text-center" data-aos="fade-up">Professional Experience</h2>
-            <div class="space-y-10 relative">
-                <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-0.5 bg-slate-800 transform md:-translate-x-1/2"></div>
-                
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-16 text-center" data-aos="fade-up">Professional Experience</h2>
+            <div class="space-y-12">
                 <!-- Taghleef Tech -->
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 group" data-aos="fade-right">
-                    <div class="md:text-right md:pr-8">
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 group" data-aos="fade-right">
+                    <div class="md:text-right md:pr-10">
                         <div class="absolute left-0 md:left-1/2 top-2 w-4 h-4 rounded-full bg-primary border-4 border-darker transform md:-translate-x-1/2 group-hover:scale-125 transition"></div>
                         <h3 class="text-xl font-bold text-white">Lead Flutter Developer</h3>
                         <p class="text-primary font-medium">Taghleef Tech • On-site</p>
                         <p class="text-sm text-slate-500 mt-1">Jun 2025 – Present</p>
                     </div>
-                    <div class="mt-2 md:mt-0 md:pl-8">
-                        <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                    <div class="mt-4 md:mt-0 md:pl-10 bg-slate-900/50 p-5 rounded-xl border border-slate-800">
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
                             <li>Architecting Clean Architecture + Riverpod across Android, iOS & Web with 90%+ code reuse</li>
                             <li>Integrating real-time device protocols for industrial IoT production dashboards</li>
                             <li>Optimized startup time & memory usage via platform-specific isolates & lazy loading</li>
@@ -617,34 +617,36 @@
                 </div>
 
                 <!-- RootX Softwares -->
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 group" data-aos="fade-left">
-                    <div class="md:text-right md:pr-8 md:col-start-2">
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 group" data-aos="fade-left">
+                    <div class="md:text-right md:pr-10 md:col-start-2">
                         <div class="absolute left-0 md:left-1/2 top-2 w-4 h-4 rounded-full bg-slate-600 border-4 border-darker transform md:-translate-x-1/2 group-hover:scale-125 transition"></div>
                         <h3 class="text-xl font-bold text-white">Senior Flutter & SaaS Developer</h3>
                         <p class="text-primary font-medium">RootX Softwares • Remote</p>
                         <p class="text-sm text-slate-500 mt-1">Aug 2025 – Present</p>
                     </div>
-                    <div class="mt-2 md:mt-0 md:pr-8 md:col-start-1 md:text-right">
-                        <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
-                            <li>Building multi-tenant SaaS modules with strict RBAC & data isolation patterns</li>
-                            <li>Integrating AI chatbots & workflow automation into enterprise mobile apps</li>
-                            <li>Optimized Flutter web performance via code splitting, virtualization & lazy routing</li>
-                            <li>Designed offline sync strategies with conflict resolution & real-time updates</li>
-                            <li>Ensured pixel-perfect cross-platform UI consistency with accessibility compliance</li>
-                        </ul>
+                    <div class="mt-4 md:mt-0 md:pr-10 md:col-start-1 md:text-right">
+                        <div class="bg-slate-900/50 p-5 rounded-xl border border-slate-800">
+                            <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
+                                <li>Building multi-tenant SaaS modules with strict RBAC & data isolation patterns</li>
+                                <li>Integrating AI chatbots & workflow automation into enterprise mobile apps</li>
+                                <li>Optimized Flutter web performance via code splitting, virtualization & lazy routing</li>
+                                <li>Designed offline sync strategies with conflict resolution & real-time updates</li>
+                                <li>Ensured pixel-perfect cross-platform UI consistency with accessibility compliance</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <!-- Smart Code -->
-                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-8 group" data-aos="fade-right">
-                    <div class="md:text-right md:pr-8">
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-10 group" data-aos="fade-right">
+                    <div class="md:text-right md:pr-10">
                         <div class="absolute left-0 md:left-1/2 top-2 w-4 h-4 rounded-full bg-slate-600 border-4 border-darker transform md:-translate-x-1/2 group-hover:scale-125 transition"></div>
                         <h3 class="text-xl font-bold text-white">Flutter Developer</h3>
                         <p class="text-primary font-medium">Smart Code • Full-time</p>
                         <p class="text-sm text-slate-500 mt-1">Feb 2023 – Aug 2025</p>
                     </div>
-                    <div class="mt-2 md:mt-0 md:pl-8">
-                        <ul class="text-slate-400 text-sm space-y-2 list-disc list-inside">
+                    <div class="mt-4 md:mt-0 md:pl-10 bg-slate-900/50 p-5 rounded-xl border border-slate-800">
+                        <ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
                             <li>Built 5+ production apps serving 100K+ users across Android & iOS</li>
                             <li>Integrated SQL Server for real-time dashboards, reducing data latency by 65%</li>
                             <li>Deployed Dialogflow + OpenAI chatbot automating 80% of support inquiries</li>
@@ -658,17 +660,57 @@
         </div>
     </section>
 
-    <!-- CONTACT -->
+    <!-- CONTACT SECTION (WHATSAPP PROMINENTLY FEATURED) -->
     <section id="contact" class="py-24 bg-gradient-to-b from-slate-900 to-darker relative overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5"></div>
-        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
-            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-6" data-aos="fade-up"><span class="gradient-text">Let's Build Something Amazing</span></h2>
-            <p class="text-slate-400 mb-10 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Open for Senior Flutter / Mobile Engineer roles focused on SaaS & AI. Let's create impactful cross-platform experiences together.</p>
-            <div class="flex flex-wrap justify-center gap-4 mb-12" data-aos="fade-up" data-aos-delay="200">
-                <a href="mailto:hossanjobayer2021@gmail.com" class="flex items-center justify-center gap-3 bg-primary hover:bg-blue-600 text-white px-8 py-4 rounded-xl font-semibold transition group shadow-lg shadow-blue-500/25 hover:scale-105"><i class="fas fa-envelope text-lg group-hover:scale-110 transition"></i> Email Me</a>
-                <a href="https://linkedin.com/in/muhammad-jobayer-hossan-267687222" target="_blank" class="flex items-center justify-center gap-3 bg-[#0A66C2] hover:bg-[#0955A3] text-white px-8 py-4 rounded-xl font-semibold transition group hover:scale-105"><i class="fab fa-linkedin text-lg group-hover:scale-110 transition"></i> LinkedIn</a>
-                <a href="https://wa.me/201503262668" target="_blank" class="flex items-center justify-center gap-3 bg-whatsapp hover:bg-green-600 text-white px-8 py-4 rounded-xl font-semibold transition group hover:scale-105"><i class="fab fa-whatsapp text-lg group-hover:scale-110 transition"></i> WhatsApp</a>
+        <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-secondary/5 to-accent/5 pointer-events-none"></div>
+        <div class="max-w-5xl mx-auto px-4 text-center relative z-10">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4" data-aos="fade-up"><span class="gradient-text">Let's Connect</span></h2>
+            <p class="text-slate-400 mb-12 max-w-2xl mx-auto" data-aos="fade-up" data-aos-delay="100">Ready to discuss your next cross-platform project, AI integration, or SaaS architecture? Reach out through your preferred channel.</p>
+            
+            <div class="grid md:grid-cols-3 gap-6 mb-12" data-aos="fade-up" data-aos-delay="200">
+                <!-- Email Card -->
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-primary/50 transition group card-hover">
+                    <div class="w-14 h-14 mx-auto bg-blue-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i class="fas fa-envelope text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-1">Email</h3>
+                    <p class="text-slate-400 text-sm mb-4">Best for formal inquiries & job offers</p>
+                    <a href="mailto:hossanjobayer2021@gmail.com" class="inline-flex items-center gap-2 text-primary hover:text-blue-400 font-medium transition">
+                        <span>hossanjobayer2021@gmail.com</span>
+                        <i class="fas fa-arrow-right text-xs group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <div class="bg-slate-900/60 border border-slate-800 rounded-2xl p-6 hover:border-blue-500/50 transition group card-hover">
+                    <div class="w-14 h-14 mx-auto bg-[#0A66C2]/10 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i class="fab fa-linkedin text-2xl text-[#0A66C2]"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-1">LinkedIn</h3>
+                    <p class="text-slate-400 text-sm mb-4">Professional networking & portfolio</p>
+                    <a href="https://linkedin.com/in/muhammad-jobayer-hossan-267687222" target="_blank" class="inline-flex items-center gap-2 text-[#0A66C2] hover:text-blue-400 font-medium transition">
+                        <span>View Profile</span>
+                        <i class="fas fa-external-link-alt text-xs group-hover:translate-x-1 transition"></i>
+                    </a>
+                </div>
+
+                <!-- WhatsApp Card (Highlighted) -->
+                <div class="bg-gradient-to-b from-green-500/10 to-emerald-500/5 border-2 border-whatsapp/50 rounded-2xl p-6 hover:border-whatsapp transition group card-hover relative overflow-hidden">
+                    <div class="absolute top-0 right-0 w-20 h-20 bg-whatsapp/10 rounded-full blur-2xl -mr-6 -mt-6"></div>
+                    <div class="w-14 h-14 mx-auto bg-whatsapp/20 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition">
+                        <i class="fab fa-whatsapp text-2xl text-whatsapp"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-1">WhatsApp</h3>
+                    <p class="text-slate-400 text-sm mb-2">Fast response • Direct chat</p>
+                    <p class="text-whatsapp font-mono text-lg mb-4 font-bold">+20 150 326 2668</p>
+                    <a href="https://wa.me/201503262668" target="_blank" class="inline-flex w-full justify-center items-center gap-2 bg-whatsapp hover:bg-green-600 text-white py-3 rounded-xl font-semibold transition group">
+                        <i class="fas fa-comment-dots text-lg"></i>
+                        <span>Chat Now</span>
+                    </a>
+                </div>
             </div>
+
+            <!-- Social Icons -->
             <div class="flex justify-center gap-6" data-aos="fade-up" data-aos-delay="300">
                 <a href="https://github.com/jabrinnalaa" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition transform hover:scale-110 hover:rotate-12" title="GitHub"><i class="fab fa-github text-xl"></i></a>
                 <a href="https://linkedin.com/in/muhammad-jobayer-hossan-267687222" target="_blank" class="w-12 h-12 rounded-full bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition transform hover:scale-110 hover:rotate-12" title="LinkedIn"><i class="fab fa-linkedin text-xl"></i></a>
@@ -684,7 +726,7 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
+    <!-- WhatsApp Float Button -->
     <a href="https://wa.me/201503262668" target="_blank" class="whatsapp-float cursor-pointer" title="Chat on WhatsApp"><i class="fab fa-whatsapp"></i></a>
 
     <!-- Back to Top -->
